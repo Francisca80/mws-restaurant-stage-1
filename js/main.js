@@ -78,7 +78,7 @@ initMap = () => {
         scrollWheelZoom: false
       });
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
-    mapboxToken: '<your MAPBOX API KEY HERE>',
+    mapboxToken: 'pk.eyJ1IjoiZnJhbmNpc2NhODB2bSIsImEiOiJjamp5NjZwMjE0ZzBmM3dwYnptanlydjFnIn0.ZCSbp72lKTxNViKVO8yrBw',
     maxZoom: 18,
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
       '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -209,3 +209,18 @@ addMarkersToMap = (restaurants = self.restaurants) => {
   });
 } */
 
+
+/**
+ * Add The service worker .mozilla example
+ */
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/js/sw/sw.js', {scope: '/js/sw/'})
+  .then(function(reg) {
+    // registration worked
+    console.log('Registration succeeded. Scope is ' + reg.scope);
+  }).catch(function(error) {
+    // registration failed
+    console.log('Registration failed with ' + error);
+  });
+}

@@ -136,6 +136,13 @@ nav h1 a {
   margin: 0;
   padding: 30px 15px 60px;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  text-align: center;
+  margin: 0;
+  padding: 30px 15px 60px;
 }
 #restaurants-list li {
   background-color: #fff;
@@ -241,9 +248,18 @@ nav h1 a {
   border-top: 1px solid #fff;
   padding: 140px 40px 30px;
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  
+
+
 }
 #reviews-container {
   padding: 30px 40px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 #reviews-container h2 {
   color: #f58500;
@@ -273,3 +289,71 @@ nav h1 a {
 #restaurant-hours td {
   color: #666;
 }
+
+/****** Media queries
+***************************/
+
+@media (max-width: 320px) {
+  body {
+    font-size: 14px;
+  }
+  
+  h1,
+  h2 { 
+    text-align: center;
+  }
+
+  #filter-container {
+    padding-top: 0.5rem;
+  }
+
+  .filter-options {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filter-options-label {
+    border-bottom: 0.25rem solid #fff;
+  }
+
+  .filter-options select {
+    font-size: 0.8rem;
+    margin: 0.55rem;
+  }
+
+  #restaurants-list li {
+    flex: 0 0 85%;
+  }
+
+  #reviews-list {
+    padding: 0;
+  }
+}
+  
+
+
+/* For Tablets and larger screens
+****************/
+
+@media (min-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .filter-options h2 {
+    margin-right: 0.5rem;
+  }
+
+ .filter-options select {
+    font-size: 0.9rem;
+    margin: 0.75rem;
+    padding: 0 0.75rem;
+    width: 170px;
+  }
+
+  #restaurants-list li {
+    flex: 0 0 42%;
+  }
+}
+
+ 
