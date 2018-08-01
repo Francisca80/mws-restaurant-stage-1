@@ -1,5 +1,5 @@
 self.addEventListener('install', function(event) {
-    console.log('Installing cache.');
+    console.log('Installing cache...');
     event.waitUntil(
       caches.open('restCache').then(function(cache) {
         return cache.addAll([
@@ -10,6 +10,7 @@ self.addEventListener('install', function(event) {
           '/restaurant.html',
           '/js/dbhelper.js',
           '/js/restaurant_info.js',
+          '/data/restaurants.json',
           '/img/1.jpg',
           '/img/2.jpg',
           '/img/3.jpg',
@@ -34,20 +35,7 @@ self.addEventListener('install', function(event) {
     );
   });
 
-  self.addEventListener('activate', function(event) {
-   const cacheWhitelist = ['restCache'];
-  
-    event.waitUntil(
-      caches.keys().then(function(keyList) {
-        return Promise.all(keyList.map(function(key) {
-          if (cacheWhitelist.indexOf(key) === -1) {
-            console.log('removing old cache: ', key);
-            return caches.delete(key);
-          }
-        }));
-      })
-    );
-  });
+ 
 
 
 
