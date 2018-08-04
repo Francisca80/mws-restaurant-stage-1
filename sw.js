@@ -27,6 +27,22 @@ self.addEventListener('install', function(event) {
     );
   });
 
+  self.addEventListener('activate', function(event) {
+    event.waitUntil(
+      caches.keys()
+      .then(function(cacheNames) {
+        return Promise.all(
+          cacheNames.filter(function(cacheName) {
+            return cacheName.startsWith('restaurant-') &&
+                 cacheName != restCache;
+          }).map(function(cacheName) {
+            return caches.delete(cacheName);
+          })
+        );
+      })
+    );
+  })
+
   self.addEventListener('fetch', function(event) {
     event.respondWith(
       caches.match(event.request).then(function(response) {
@@ -35,7 +51,7 @@ self.addEventListener('install', function(event) {
     );
   });
 
- 
+
 
 /* Mozilla https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers
 was a usefull source in understanding this*/
